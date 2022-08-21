@@ -1,0 +1,193 @@
+# Домашнє завдання №14 від 14.08.2022р.
+# Exercise 1.Создайте класс «Прямоугольник», у которого присутствуют
+# два поля (ширина и высота).
+# 1.1 Реализуйте метод сравнения прямоугольников
+# по площади.
+# 1.2 Также реализуйте методы сложения прямоугольников
+# (площадь суммарного прямоугольника должна быть равна сумме площадей
+# прямоугольников, которые вы складываете).
+# 1.3 Реализуйте методы умножения прямоугольника на число n
+# (это должно увеличить площадь базового прямоугольника в n раз).
+print("\n\tExercise 1. Операції з класом Прямокутник:")
+import random
+class Rectangle:
+
+    def __init__(self, x, y):
+        if not isinstance(x, (int, float)):
+            raise TypeError ()
+        if not  isinstance(y, (int, float)):
+            raise TypeError()
+
+        if x <= 0 or y <= 0:
+            raise ValueError()
+
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f'{self.x} x {self.y}'
+
+    def __add__(self, other):
+        tmp = Rectangle(self.x + other.x, self.y + other.y)
+        return tmp
+
+    def __iadd__(self, other):
+        self.x += other.x
+        self.y += other.y
+        return self
+
+    def __rmul__(self, other):
+        tmp = Rectangle(self.x * other, self.y * other)
+        return tmp
+
+    def value(self):
+        return self.x * self.y
+
+    def __lt__(self, other):
+        if isinstance(other, Rectangle):
+            return self.area_rectangle() < other.area_rectangle()
+
+        if isinstance(other, tuple) and len(other) == 2:
+            x1, y2 = other
+            return self.area_rectangle() < x1 * y2
+        return NotImplemented
+
+    def __le__(self, other):
+        return self.value() <= other.value()
+
+    def __gt__(self, other):
+        return self.value() > other.value()
+
+    def __ge__(self, other):
+        return self.value() >= other.value()
+
+    def __eq__(self, other):
+        return self.value() == other.value()
+
+    def __ne__(self, other):
+        return self.value() != other.value()
+
+    def area_rectangle(self):
+        return self.x * self.y
+
+    def perumetr(self):
+        return (self.x + self.y) * 2
+
+    def comparison(self):
+        return rectangle1 > rectangle2
+
+    def __add__(self, other):
+        rectangle3 = self.area_rectangle + other.area_rectangle
+        return rectangle3
+
+    def rectangle_m(self, n: int):
+        if not isinstance(n, int):
+            raise TypeError()
+        return n * (int(f'{self.x  * self.y}'))
+
+rectangle1 = Rectangle(4, 6)
+rectangle2 = Rectangle(5, 4)
+rectangle3 = rectangle1.area_rectangle() + rectangle2.area_rectangle()
+rectangle4 = rectangle1.rectangle_m(4)
+rectangle5 = rectangle2.rectangle_m(4)
+
+print(f'Exercise 1.1. Порівняння: прямокутник №1 більший прямокутника №2 = '
+      f'{rectangle1 < rectangle2}')
+
+print('\nExercise 1.2.1. Площа прямокутника №1 =',
+      rectangle1.area_rectangle(),';')
+
+print('Exercise 1.2.2. Площа прямокутника №2 =',
+      rectangle2.area_rectangle(),';')
+
+print('Exercise 1.2.3. Загальна площа обох прямокутників =',
+      rectangle3,';')
+
+print('Exercise 1.2.4. Периметр прямокутника №1 =', rectangle1.perumetr(),';')
+
+print('\nExercise 1.3.1 Множення прямокутника №1 на число "n" =', rectangle4,';')
+
+print('Exercise 1.3.2 Множення прямокутника №2 на число "n" =', rectangle5,';')
+
+# Exercise 2.  Создайте класс «Правильная дробь»
+# и реализуйте методы сложения, cравнения,
+# вычитания и произведения
+# для экземпляров этого класса.
+print("\n\tExercise 2. Операції з класом Правильні дроби:")
+import math
+
+class Proper_Fraction:
+
+    def __init__(self, x, y):
+        if not isinstance(x, int):
+            raise TypeError()
+        if not isinstance(y, int):
+            raise TypeError()
+        if y == 0:
+            raise ZeroDivisionError()
+
+        self.__x = x
+        self.__y = y
+
+    @property
+    def x(self):
+        tmp = math.gcd(self.__x, self.__y)
+        self.__x //= tmp
+        self.__y //= tmp
+        return self.__x
+
+    @property
+    def y(self):
+        tmp = math.gcd(self.__x, self.__y)
+        self.__x //= tmp
+        self.__y //= tmp
+        return self.__x
+        self.__x = x
+        self.__y = y
+
+    def __add__(self, other):
+        if isinstance(other, Proper_Fraction):
+            y = self.x * other.y
+            y = self.x * other.y + self.y * other.x
+            return f'{x} / {y}'
+
+    def __str__ (self):
+        if self.x == 0:
+            return f'0'
+        elif self.y == 1:
+            return f'{self.x}'
+        elif self.x == self.y:
+            return f'{self.x} // {self.y}'
+
+        return f'{self.x} / {self.y}'
+
+    def __add__(self, other):
+        if isinstance(other, Proper_Fraction):
+            y = self.__y * other.__y
+            x = self.__x * other.__y + self.__y * other.__x
+            return f'{x} / {y}'
+
+    def __mul__(self, other):
+        if isinstance(other, Proper_Fraction):
+            x = self.__x * other.__x
+            y = self.__y * other.__y
+            return f'{x} / {y}'
+
+    def __sub__(self, other):
+        if isinstance(other, Proper_Fraction):
+            y = self.__y * other.__y
+            x = self.__x * other.__y - self.__y * other.__x
+            return f'{x} / {y}'
+
+    def __lt__(self, other):
+        if isinstance(other, Proper_Fraction):
+            return (self.__x / self.__y) < (other.__y / other.__y)
+        return NotImplemented
+
+proper_fraction1 = Proper_Fraction(4, 6)
+proper_fraction2 = Proper_Fraction(3, 7)
+
+print(f'Exercise 2.1.Результат додавання дробів: {proper_fraction1 + proper_fraction2};')
+print(f'Exercise 2.2.Результат множення дробів: {proper_fraction1 * proper_fraction2};')
+print(f'Exercise 2.3.Результат віднімання дробів: {proper_fraction1 - proper_fraction2};')
+print(f'Exercise 2.4.Результат порівняння дробів: {(proper_fraction1) < (proper_fraction2)};')
