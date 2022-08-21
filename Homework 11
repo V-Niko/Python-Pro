@@ -114,7 +114,9 @@ class Order():
         res = f'{self.buyer}\n'
 
         for index, item in enumerate(self.products):
-            res += f'\t{item} x {self.quantities[index]} = {item.price * self.weight[index]} + {item.price * self.quantities[index]} грн.\n'
+            #res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} + {item.price * self.weight[index]} грн.\n'
+            res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} грн.\n'
+            res += f'\t{item} x {self.weight[index]} = {item.price * self.weight[index]} грн.\n'
 
         res += f'Total price: {self.total()} грн.'
         return res
@@ -145,6 +147,10 @@ order_2.add_product(my_product_3, 2, 5)
 order_3.add_product(my_product_1, 5, 4)
 order_3.add_product(my_product_2, 9, 3)
 order_3.add_product(my_product_3, 2, 2)
+
+print(my_product_1)
+print(my_product_2)
+print(my_product_3)
 
 print(order_1)
 print(order_2)
