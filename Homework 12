@@ -1,0 +1,101 @@
+# Домашнє завдання №12 від 07.08.2022р.
+# Exercise 1. Создайте класс, описывающий человека
+# (создайте метод, выводящий информацию о человеке).
+print("Exercise 1")
+
+import settings
+class Human():      #Лекція 2 Заняття 07.08.2022р. 23-00 хв.
+    def __init__(self, country, city, name, surname, gender, telephone):
+        """Ініціалізація Людини"""
+        self.country = country
+        self.city = city
+        self.name = name
+        self.surname = surname
+        self.gender = gender
+        self.telephone = telephone
+
+    def __str__(self):
+        return f'{self.country} {self.city} {self.name} {self.surname} {self.gender}  {self.telephone}'
+
+    def description_name(self):
+            """Опис Людини"""
+            desc = self.country + ' ' + self.city + ' ' + self.name \
+                   + ' ' + self.surname + ' ' + self.gender + ' ' + str(self.telephone)
+
+human_1 = Human('China', 'Beijing', 'Jackie', 'Chan', 'male', +86101234567)
+human_2 = Human('Vietnam', 'Hanoi', 'Maung', 'Tin', 'male', +86101234568)
+human_3 = Human('Japan', 'Tokyo', 'Takeshi', 'Kitano', 'male', +86101234569)
+human_4 = Human('Ukraine', 'Kyiv', 'Viktor', 'Niko', 'male', +380671112233)
+
+print('1.', human_1.country, ',', human_1.city, ',', human_1.name, ',',
+            human_1.surname, ',', human_1.gender, ',', human_1.telephone, ';')
+
+print('2.', human_2.country, ',', human_2.city, ',', human_2.name, ',',
+            human_2.surname, ',', human_2.gender, ',', human_2.telephone, ';')
+
+print('3.', human_3.country, ',', human_3.city, ',', human_3.name, ',',
+            human_3.surname, ',', human_3.gender, ',', human_3.telephone, ';')
+
+print('4.', human_4.country, ',', human_4.city, ',', human_4.name, ',',
+            human_4.surname, ',', human_4.gender, ',', human_4.telephone, ';')
+
+#Exercise 2. На его основе создайте класс Студент (переопределите
+# метод вывода информации).
+print("\nExercise 2")
+
+class Student(Human):
+
+    def __init__ (self, country: str, city: str, name: str, surname: str, data_of_birht: str,
+                  gender: str, telephone: str):
+        """Ініціалізація Студента"""
+        super().__init__(country, city, name, surname, gender, telephone)
+        self.data_of_birht = data_of_birht
+
+    def __eq__ (self, other):
+        return self.country == other.country and self.city == other.city\
+               and self.surname == other.surname and self.name == other.name\
+               and self.data_of_birht == data_of_birht and self.gender == gender\
+               and self.telephone == telephone
+
+    def __str__ (self):
+        return f'{super().__str__()};{self.data_of_birht}'
+
+#Exercise 3. Создайте класс Группа, который содержит массив из
+# 10 объектов класса Студент. Реализуйте методы добавления,
+# удаления студента и метод поиска студента по фамилии.
+# Определите для Группы метод __str__() для возвращения списка
+# студентов в виде строки.
+print("\nExercise 3")
+class Group:
+    def __init__(self, title):
+        self.title = title
+        self.students = []
+
+    def add_student(self,student: Student):
+        #"""Перевірка умови, щодо максимальної кількості студентів в групі,
+              # якщо -1 значить група студентів вже укомплектована"""
+        if len(self.students) >= settings.MAX_STUDENTS_IN_GROUP:
+            return -1
+
+        for item in self.students:
+            if item == student:
+        # """Перевірка умови, чи зарахований студент в групу,
+        # якщо зараховано, тоді функція повертає -2"""
+                return -2
+
+        self.students.append(student)
+
+    def __str__ (self):
+        return f'{self.title}\n' + '\n'.join(map(str, self.students))
+
+student_1 = Student('China','Beijing', 'Jackie', 'Chan', '15-04-2001р.', 'male', +861012345690)
+student_2 = Student('Vietnam', 'Hanoi', 'Maung', 'Tin', '12-03-2000р.', 'male', +861012345691)
+student_3 = Student('Japan', 'Tokyo', 'Takeshi', 'Kitano', '20-12-2008р.', 'female', +861012345692)
+student_4 = Student('Ukraine', 'Kyiv', 'Viktor', 'Niko', '29-08-1972р.', 'male', +380671112233)
+
+grp = Group('Python Pro')
+grp.add_student(student_1)
+grp.add_student(student_2)
+grp.add_student(student_3)
+grp.add_student(student_4)
+print(grp)
