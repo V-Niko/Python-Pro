@@ -1,0 +1,38 @@
+
+from modui_2 import Buyer
+from modui_1 import Product
+
+class Order():
+    def __init__(self, buyer: Buyer = None):
+        """Ініціалізація замовлення"""
+        self.buyer = buyer
+        self.products = []
+        self.weight = []
+        self.quantities = []
+
+    def add_product(self, product: Product, weight: int or float,
+                    quantity: int or float):
+        if product in self.products:
+            index = self.products.index(product)
+            self.weight[index] += weight
+            """ weight - це вага товару"""
+            self.quantities[index] += quantity
+            """ quantities - це кількість товару"""
+        else:
+            self.products.append(product)
+            self.weight.append(weight)
+            self.quantities.append(quantity)
+
+    def total(self):
+        res = 0
+        for index, item in enumerate(self.products):
+            res += item.price * self.quantities[index]
+        return res
+
+    def __str__(self):
+        res = f'{self.buyer}\n'
+
+        for index, item in enumerate(self.products):
+            res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} грн.\n'
+        res += f'Total price: {self.total()} грн.'
+        return res
