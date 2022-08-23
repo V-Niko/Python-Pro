@@ -20,6 +20,9 @@ class Product():
         desc = self.country + ' ' + self.industry_type + ' ' + self.color +\
                ' ' + str(self.price)
 
+    def __str__(self):
+       return f'{self.country} {self.industry_type} {self.price}'
+
 my_products_1 = Product('China', 'clothing', 'white', 40)
 my_products_2 = Product('Vietnam', 'appliances', 'green', 240)
 my_products_3 = Product('Japan', 'record player', 'grey', 1300)
@@ -37,7 +40,7 @@ print('3.',my_products_3.country,',', my_products_3.industry_type,',',
 # можете использовать фамилию, имя, отчество, мобильный телефон и т. д.
 print("\nExercise 2.")
 
-class Buyer(): #Лекція 2 Заняття 07.08.2022р. 23-00 хв.
+class Buyer():
     def __init__(self, country, city, name, surname, gender,
                  email, interests, telephone):
         """Ініціалізація Покупця"""
@@ -56,10 +59,15 @@ class Buyer(): #Лекція 2 Заняття 07.08.2022р. 23-00 хв.
                + ' ' + self.surname + ' ' + self.gender + ' ' \
                + self.email + ' ' + self.interests + ' ' + str(self.telephone)
 
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
 buyer_1 = Buyer('China', 'Beijing', 'Jackie', 'Chan', 'male',
                 'chan@gmail.com','arts', +86101234567)
+
 buyer_2 = Buyer('Vietnam', 'Hanoi', 'Maung', 'Tin', 'male',
                 'tin@gmail.com', 'drinks', +86101234568)
+
 buyer_3 = Buyer('Japan', 'Tokyo', 'Takeshi', 'Kitano', 'male',
                 'kitano@gmail.com', 'cars', +86101234569)
 
@@ -67,11 +75,9 @@ print('1.',buyer_1.country,',', buyer_1.city,',', buyer_1.name,',',
       buyer_1.surname,',', buyer_1.gender,',', buyer_1.email,',',
       buyer_1.interests,',', buyer_1.telephone,';')
 
-
 print('2.',buyer_2.country,',', buyer_2.city,',', buyer_2.name,',',
       buyer_2.surname,',', buyer_2.gender,',', buyer_2.email,',',
       buyer_2.interests,',', buyer_2.telephone,';')
-
 
 print('3.',buyer_3.country,',', buyer_3.city,',', buyer_3.name,',',
       buyer_3.surname,',', buyer_3.gender,',', buyer_3.email,',',
@@ -97,33 +103,32 @@ class Order():
                     quantity: int or float):
         if product in self.products:
             index = self.products.index(product)
-            self.weight[index] += weight  #вага
-            self.quantities[index] += quantity  #кількість
+            self.weight[index] += weight
+            """ weight - це вага товару"""
+            self.quantities[index] += quantity
+            """ quantities - це кількість товару"""
         else:
             self.products.append(product)
             self.weight.append(weight)
             self.quantities.append(quantity)
 
-    def total (self):
+    def total(self):
         res = 0
         for index, item in enumerate(self.products):
-            res += item.price * self.quantities[index] + item.price * self.weight[index]
-            return res
+            res += item.price * self.quantities[index]
+        return res
 
     def __str__(self):
         res = f'{self.buyer}\n'
 
         for index, item in enumerate(self.products):
-            #res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} + {item.price * self.weight[index]} грн.\n'
             res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} грн.\n'
-            res += f'\t{item} x {self.weight[index]} = {item.price * self.weight[index]} грн.\n'
-
         res += f'Total price: {self.total()} грн.'
         return res
 
 my_product_1 = Product('China', 'clothing', 'white', 40)
-my_product_2 = Product('Vietnam', 'appliances', 'green', 240)
-my_product_3 = Product('Japan', 'record player', 'grey', 1300)
+my_product_2 = Product('Vietnam', 'vegetables', 'green', 240)
+my_product_3 = Product('Japan', 'car', 'grey', 13000)
 
 buyer_1 = Buyer('China', 'Beijing', 'Jackie', 'Chan', 'male',
                 'chan@gmail.com','arts', +86101234567)
@@ -136,26 +141,26 @@ order_1 = Order(buyer_1)
 order_2 = Order(buyer_2)
 order_3 = Order(buyer_3)
 
-order_1.add_product(my_product_1, 7, 3)
-order_1.add_product(my_product_2, 6, 4)
-order_1.add_product(my_product_3, 1, 2)
+order_1.add_product(my_product_1, 7, 2)
+order_1.add_product(my_product_2, 6, 2)
+order_1.add_product(my_product_3, 1, 1)
 
-order_2.add_product(my_product_1, 1, 5)
-order_2.add_product(my_product_2, 8, 3)
-order_2.add_product(my_product_3, 2, 5)
+order_2.add_product(my_product_1, 7, 2)
+order_2.add_product(my_product_2, 6, 2)
+order_2.add_product(my_product_3, 1, 1)
 
-order_3.add_product(my_product_1, 5, 4)
-order_3.add_product(my_product_2, 9, 3)
-order_3.add_product(my_product_3, 2, 2)
+order_3.add_product(my_product_1, 7, 2)
+order_3.add_product(my_product_2, 6, 2)
+order_3.add_product(my_product_3, 1, 1)
 
 print(my_product_1)
 print(my_product_2)
 print(my_product_3)
 
-print(order_1)
-print(order_2)
-print(order_3)
+print('1.',buyer_1)
+print('2.',buyer_2)
+print('3.',buyer_3)
 
-print(buyer_1)
-print(buyer_2)
-print(buyer_3)
+print('1.',order_1)
+print('2.',order_2)
+print('3.',order_3)
