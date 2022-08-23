@@ -1,0 +1,89 @@
+# Домашнє завдання №11 від 06.08.2022р.
+# Exercise 1.Создайте пользовательский класс
+# для описания товара (предположим, это задел
+# для интернет-магазина). В качестве полей товара
+# можете использовать значение цены, описание,
+# габариты товара. Создайте пару экземпляров
+# вашего класса и протестируйте их работу.
+print("Exercise 1.")
+
+import modui_1, modui_2, modui_3
+
+my_products_1 = modui_1.Product('China', 'clothing', 'white', 40)
+my_products_2 = modui_1.Product('Vietnam', 'appliances', 'green', 240)
+my_products_3 = modui_1.Product('Japan', 'record player', 'grey', 1300)
+
+print('1.',my_products_1.country,',', my_products_1.industry_type,',',
+      my_products_1.color,',', my_products_1.price,'Euro',';')
+
+print('2.',my_products_2.country,',', my_products_2.industry_type,',',
+      my_products_2.color,',', my_products_2.price,'USD',';')
+
+print('3.',my_products_3.country,',', my_products_3.industry_type,',',
+      my_products_3.color,',', my_products_3.price,'Yen',';')
+
+my_product_1 = modui_1.Product('China', 'clothing', 'white', 40)
+my_product_2 = modui_1.Product('Vietnam', 'vegetables', 'green', 240)
+my_product_3 = modui_1.Product('Japan', 'car', 'grey', 13000)
+
+buyer_1 = modui_2.Buyer('China', 'Beijing', 'Jackie', 'Chan', 'male',
+                'chan@gmail.com','arts', +86101234567)
+buyer_2 = modui_2.Buyer('Vietnam', 'Hanoi', 'Maung', 'Tin', 'male',
+                'tin@gmail.com', 'drinks', +86101234568)
+buyer_3 = modui_2.Buyer('Japan', 'Tokyo', 'Takeshi', 'Kitano', 'male',
+                'kitano@gmail.com', 'cars', +86101234569)
+
+order_1 = modui_3.Order(buyer_1)
+order_2 = modui_3.Order(buyer_2)
+order_3 = modui_3.Order(buyer_3)
+
+order_1.add_product(my_product_1, 7, 2)
+order_1.add_product(my_product_2, 6, 2)
+order_1.add_product(my_product_3, 1, 1)
+
+order_2.add_product(my_product_1, 7, 2)
+order_2.add_product(my_product_2, 6, 2)
+order_2.add_product(my_product_3, 1, 1)
+
+order_3.add_product(my_product_1, 7, 2)
+order_3.add_product(my_product_2, 6, 2)
+order_3.add_product(my_product_3, 1, 1)
+
+print(my_product_1)
+print(my_product_2)
+print(my_product_3)
+
+print('1.',buyer_1)
+print('2.',buyer_2)
+print('3.',buyer_3)
+
+print('1.',order_1)
+print('2.',order_2)
+print('3.',order_3)
+
+print('2.',my_products_2.country,',', my_products_2.industry_type,',',
+      my_products_2.color,',', my_products_2.price,'USD',';')
+
+print('3.',my_products_3.country,',', my_products_3.industry_type,',',
+      my_products_3.color,',', my_products_3.price,'Yen',';')
+
+buyer_1 = modui_2.Buyer('China', 'Beijing', 'Jackie', 'Chan', 'male',
+                'chan@gmail.com','arts', +86101234567)
+
+buyer_2 = modui_2.Buyer('Vietnam', 'Hanoi', 'Maung', 'Tin', 'male',
+                'tin@gmail.com', 'drinks', +86101234568)
+
+buyer_3 = modui_2.Buyer('Japan', 'Tokyo', 'Takeshi', 'Kitano', 'male',
+                'kitano@gmail.com', 'cars', +86101234569)
+
+print('1.',buyer_1.country,',', buyer_1.city,',', buyer_1.name,',',
+      buyer_1.surname,',', buyer_1.gender,',', buyer_1.email,',',
+      buyer_1.interests,',', buyer_1.telephone,';')
+
+print('2.',buyer_2.country,',', buyer_2.city,',', buyer_2.name,',',
+      buyer_2.surname,',', buyer_2.gender,',', buyer_2.email,',',
+      buyer_2.interests,',', buyer_2.telephone,';')
+
+print('3.',buyer_3.country,',', buyer_3.city,',', buyer_3.name,',',
+      buyer_3.surname,',', buyer_3.gender,',', buyer_3.email,',',
+      buyer_3.interests,',', buyer_3.telephone,';')
