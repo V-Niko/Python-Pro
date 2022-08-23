@@ -1,0 +1,16 @@
+
+class Product():
+    def __init__(self, country, industry_type, color, price):
+        """Ініціалізація товару"""
+        self.country = country
+        self.industry_type = industry_type
+        self.color = color
+        self.price = price
+
+    def description_name(self):
+        """Опис товару"""
+        desc = self.country + ' ' + self.industry_type + ' ' + self.color +\
+               ' ' + str(self.price)
+
+    def __str__(self):
+       return f'{self.country} {self.industry_type} {self.price}'
