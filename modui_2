@@ -1,0 +1,22 @@
+
+class Buyer():
+    def __init__(self, country, city, name, surname, gender,
+                 email, interests, telephone):
+        """Ініціалізація Покупця"""
+        self.country = country
+        self.city = city
+        self.name = name
+        self.surname = surname
+        self.gender = gender
+        self.email = email
+        self.interests = interests
+        self.telephone = telephone
+
+    def description_name(self):
+        """Опис Покупця"""
+        desc = self.country + ' ' + self.city + ' ' + self.name\
+               + ' ' + self.surname + ' ' + self.gender + ' ' \
+               + self.email + ' ' + self.interests + ' ' + str(self.telephone)
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
