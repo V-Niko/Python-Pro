@@ -1,0 +1,17 @@
+class Human():
+    def __init__(self, country, city, name, surname, gender, telephone):
+        """Ініціалізація Людини"""
+        self.country = country
+        self.city = city
+        self.name = name
+        self.surname = surname
+        self.gender = gender
+        self.telephone = telephone
+
+    def __str__(self):
+        return f'{self.country} {self.city} {self.name} {self.surname} {self.gender}  {self.telephone}'
+
+    def description_name(self):
+            """Опис Людини"""
+            desc = self.country + ' ' + self.city + ' ' + self.name \
+                   + ' ' + self.surname + ' ' + self.gender + ' ' + str(self.telephone)
