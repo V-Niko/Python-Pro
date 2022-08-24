@@ -3,8 +3,9 @@
 # (создайте метод, выводящий информацию о человеке).
 print("Exercise 1")
 
-import settings
-class Human():      #Лекція 2 Заняття 07.08.2022р. 23-00 хв.
+import settings_12
+
+class Human():
     def __init__(self, country, city, name, surname, gender, telephone):
         """Ініціалізація Людини"""
         self.country = country
@@ -60,27 +61,28 @@ class Student(Human):
     def __str__ (self):
         return f'{super().__str__()};{self.data_of_birht}'
 
-#Exercise 3. Создайте класс Группа, который содержит массив из
+# Exercise 3. Создайте класс Группа, который содержит массив из
 # 10 объектов класса Студент. Реализуйте методы добавления,
 # удаления студента и метод поиска студента по фамилии.
 # Определите для Группы метод __str__() для возвращения списка
 # студентов в виде строки.
 print("\nExercise 3")
+
 class Group:
     def __init__(self, title):
         self.title = title
         self.students = []
 
     def add_student(self,student: Student):
-        #"""Перевірка умови, щодо максимальної кількості студентів в групі,
+        """Перевірка умови, щодо максимальної кількості студентів в групі,
               # якщо -1 значить група студентів вже укомплектована"""
-        if len(self.students) >= settings.MAX_STUDENTS_IN_GROUP:
+        if len(self.students) >= settings_12.MAX_STUDENTS_IN_GROUP:
             return -1
 
         for item in self.students:
             if item == student:
-        # """Перевірка умови, чи зарахований студент в групу,
-        # якщо зараховано, тоді функція повертає -2"""
+                """Перевірка умови, чи зарахований студент в групу,
+                 якщо зараховано, тоді функція повертає -2"""
                 return -2
 
         self.students.append(student)
