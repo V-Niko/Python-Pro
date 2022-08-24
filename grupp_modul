@@ -1,0 +1,32 @@
+import student_modul
+
+class Group:
+    def __init__(self, title):
+        self.title = title
+        self.students = []
+
+    def a(self, student: student_modul.Student):
+        if len(self.students) >= settings_15.MAX_STUDENTS_IN_GROUP:
+            raise FirstError('Багато студентів!')
+
+    def add_student(self,student: student_modul.Student):
+        """Перевірка умови, щодо максимальної кількості студентів в групі,
+              # якщо -1 значить група студентів вже укомплектована"""
+        if len(self.students) >= settings_15.MAX_STUDENTS_IN_GROUP:
+            return -1
+
+        for item in self.students:
+            if item == student:
+                """Перевірка умови, чи зарахований студент в групу,
+                 якщо зараховано, тоді функція повертає -2"""
+                return -2
+
+        self.students.append(student)
+
+    def finder(self, surname):
+        for a_group in self.students:
+            if a_group.surname.lower() == surname.lower():
+                return a_group
+
+    def __str__ (self):
+        return f'{self.title}\n' + '\n'.join(map(str, self.students))
