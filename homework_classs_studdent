@@ -1,0 +1,12 @@
+# Домашнє завдання №15 від 20.08.2022р.
+# Exercise 1. Разнесите классы, которые использовали
+# при решении задачи о группе студентов
+# (задания прошлой лекции) по модулям. Убедитесь
+# в работоспособности проекта.
+
+import human_modul
+import student_modul
+import grupp_modul
+print(human_modul.Human)
+print(student_modul.Student)
+print(grupp_modul.Group)
