@@ -1,5 +1,5 @@
 class Human():
-    def __init__(self, country, city, name, surname, gender, telephone):
+    def __init__(self, country, city, name, surname, gender, telephone ):
         """Ініціалізація Людини"""
         self.country = country
         self.city = city
