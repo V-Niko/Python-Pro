@@ -1,0 +1,17 @@
+import human_modul
+class Student(human_modul.Human):
+
+    def __init__ (self, country: str, city: str, name: str, surname: str,
+                  data_of_birht: str, gender: str, telephone):
+        #"""Ініціалізація Студента"""
+        super().__init__(country, city, name, surname, gender, telephone)
+        self.data_of_birht = data_of_birht
+
+    def __eq__(self, other):
+        return self.country == other.country and self.city == other.city\
+               and self.surname == other.surname and self.name == other.name\
+               and self.data_of_birht == data_of_birht and self.gender == gender\
+               and self.telephone == telephone
+
+    def __str__(self):
+        return f'{super().__str__()};{self.data_of_birht}'
