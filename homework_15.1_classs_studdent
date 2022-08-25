@@ -7,6 +7,31 @@
 import human_modul
 import student_modul
 import grupp_modul
-print(human_modul.Human)
-print(student_modul.Student)
-print(grupp_modul.Group)
+human_1 = human_modul.Human('China', 'Beijing', 'Jackie', 'Chan', 'male', +86101234567)
+human_2 = human_modul.Human('Vietnam', 'Hanoi', 'Maung', 'Tin', 'male', +86101234568)
+human_3 = human_modul.Human('Japan', 'Tokyo', 'Takeshi', 'Kitano', 'male', +86101234569)
+human_4 = human_modul.Human('Ukraine', 'Kyiv', 'Viktor', 'Niko', 'male', +380671112233)
+
+print('1.', human_1.country, ',', human_1.city, ',', human_1.name, ',',
+            human_1.surname, ',', human_1.gender, ',', human_1.telephone, ';')
+
+print('2.', human_2.country, ',', human_2.city, ',', human_2.name, ',',
+            human_2.surname, ',', human_2.gender, ',', human_2.telephone, ';')
+
+print('3.', human_3.country, ',', human_3.city, ',', human_3.name, ',',
+            human_3.surname, ',', human_3.gender, ',', human_3.telephone, ';')
+
+print('4.', human_4.country, ',', human_4.city, ',', human_4.name, ',',
+            human_4.surname, ',', human_4.gender, ',', human_4.telephone, ';')
+
+student_1 = student_modul.Student('China','Beijing', 'Jackie', 'Chan', '15-04-2001р.', 'male', +861012345690)
+student_2 = student_modul.Student('Vietnam', 'Hanoi', 'Maung', 'Tin', '12-03-2000р.', 'male', +861012345691)
+student_3 = student_modul.Student('Japan', 'Tokyo', 'Takeshi', 'Kitano', '20-12-2008р.', 'female', +861012345692)
+student_4 = student_modul.Student('Ukraine', 'Kyiv', 'Viktor', 'Niko', '29-08-1972р.', 'male', +380671112233)
+
+grp = grupp_modul.Group('Python Pro')
+grp.add_student(student_1)
+grp.add_student(student_2)
+grp.add_student(student_3)
+grp.add_student(student_4)
+print(grp)
