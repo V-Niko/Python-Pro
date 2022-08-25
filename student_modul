@@ -1,7 +1,7 @@
 import human_modul
 class Student(human_modul.Human):
 
-    def __init__ (self, country: str, city: str, name: str, surname: str,
+    def __init__(self, country: str, city: str, name: str, surname: str,
                   data_of_birht: str, gender: str, telephone):
         #"""Ініціалізація Студента"""
         super().__init__(country, city, name, surname, gender, telephone)
