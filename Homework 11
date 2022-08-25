@@ -157,7 +157,7 @@ print('1.', my_product_1)
 print('2.', my_product_2)
 print('3.', my_product_3)
 
-print('1.',buyer_1)
+print('\n1.',buyer_1)
 print('2.',buyer_2)
 print('3.',buyer_3)
 
