@@ -153,9 +153,9 @@ order_3.add_product(my_product_1, 7, 2)
 order_3.add_product(my_product_2, 6, 2)
 order_3.add_product(my_product_3, 1, 1)
 
-print(my_product_1)
-print(my_product_2)
-print(my_product_3)
+print('1.', my_product_1)
+print('2.', my_product_2)
+print('3.', my_product_3)
 
 print('1.',buyer_1)
 print('2.',buyer_2)
