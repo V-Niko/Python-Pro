@@ -1,0 +1,45 @@
+# Домашнє завдання №16 від 21.08.2022р.
+# Exercise 1. Дополните класс Группа (задание Лекции 2)
+# возможностью поддержки итерационного протокола
+#python дополнить класс с возможностью поддержки итерационного протокола
+#print("Exercise 1.")
+class Student:
+
+    def __init__ (self, name: str, surname: str, gender: str, telephone):
+        """Ініціалізація Студента"""
+        self.name = name
+        self.surname = surname
+        self.gender = gender
+        self.telephone = telephone
+
+    def __str__ (self):
+        self.students = []
+
+class Group: # МАЙЖЕ ЗРОБЛЕНО!!!!!!!!!!!!!!!!!!!!!
+    def __init__(self):
+        self.students = []
+
+    def add_student(self, student: Student):
+        """Перевірка умови, щодо максимальної кількості студентів в групі,
+              # якщо -1 значить група студентів вже укомплектована"""
+        self.students.appened(student)
+
+    def __len__(self):
+        return len(self.students)
+
+    def __getitem__(self):
+        return self.students
+
+student_1 = Student('Jackie', 'Chan', 'male', +861012345690)
+student_2 = Student('Maung', 'Tin', 'male', +861012345691)
+student_3 = Student('Takeshi', 'Kitano', 'male', +861012345692)
+student_4 = Student('Viktor', 'Niko', 'male', +380671112233)
+
+group = Group()
+group.add_student(student_1)
+group.add_student(student_2)
+group.add_student(student_3)
+group.add_student(student_4)
+
+for student in group.students:
+    print(student)
