@@ -16,17 +16,38 @@
 # вами величины.
 print("Exercise 1.")
 
-def geo_progres(a, q, n):
-    if n ==0:
-        return 0
-    else:
-        return a + geo_progres(a * q, q, n - 1)
-print(geo_progres(1, 8, 7))
+def geo_progres(start, stop, step):
+    while start < stop:
+        command = yield start
+        if command and command.lower() == 'stop':
+            return None
+        start *= step
 
-def gen_geo_progres():
-    for i in [1, 8, 7]:
-        yield i
-res =  gen_geo_progres()
-print(next(res))
-print(next(res))
-print(next(res))
+z = geo_progres(1, 1000, 3)
+for item in z:
+    print(item, end= '; ')
+    if item > 1000:
+        z.send('stop')
+
+
+print("\n\nExercise 2.")
+
+def my_range(*args):
+    if len(args) == 1:
+        start, stop, step = 0, args[0], 1
+    elif len(args) == 2:
+        start, stop, step = args[0], args[1], 1
+    elif len(args) == 3:
+        start, stop, step = args[0], args[1], args[2]
+    else:
+        raise TypeError()
+    if step >= 0 and start > stop:
+        raise ValueError()
+
+    while start < stop:
+        yield start
+        start += step
+
+for i in range(10, 150, 17):
+    #print(i)
+    print(i, end= '; ')
