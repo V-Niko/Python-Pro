@@ -15,7 +15,6 @@
 # простые числа. Верхняя граница этого диапазона должна быть задана
 # параметром этой функции.
 
-
 print("Exercise 1.")
 
 def geo_progres(start, stop, step):
@@ -30,7 +29,6 @@ for item in z:
     print(item, end= '; ')
     if item > 1000:
         z.send('stop')
-
 
 print("\n\nExercise 2.")
 
@@ -60,36 +58,21 @@ print("\n\nExercise 3.")
 x = (pow (i, 3) for i in range(2, 20))
 print(sum(x), end= '; ')
 
-
 print("\n\nExercise 4.")
-def prime_digit(n):
 
-    primes = [2]
-    a = 2
+def linee():
+    i = 1
+    while True:
+        i += 2
+        yield i
 
-    while a < n:
+def gen_prime(n):
+    i = 2
+    it = linee()
+    while i < n:
+        it = (lambda i: filter(lambda x: x % i, it))(i)
+        i = next(it)
+        yield i
 
-        counter = 0
-
-        for i in primes:
-            if a % i == 0:
-                counter += 1
-
-        if counter == 0:
-            primes.append(a)
-        else:
-            counter = 0
-
-        a = a + 1
-
-    print(primes(5))
-
-# def prime(x):
-#     if x in [0, 1]:
-#         return False
-#     if x == 2:
-#         return True
-#     for n in xrange(3, int(x ** 0.5 + 1)):
-#         if x % n == 0:
-#             return False
-#     return True
+for i in gen_prime(30):
+    print(i, end= '; ')
