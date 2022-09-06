@@ -4,9 +4,9 @@
 # закон которой задается с помощью пользовательской функции.
 # Кроме этого параметром генераторной функции должны быть
 # значение первого члена прогрессии и количество выдаваемых
-# членов последовательности (n). Генератор должен остановить
-# свою работу или по достижению n — го члена , или при передаче
-# команды на завершение.
+# членов последовательности (n).
+# Генератор должен остановить свою работу или по достижению
+# n — го члена , или при передаче команды на завершение.
 
 # Exercise 2. Используя функцию замыкания реализуйте такой
 # прием программирования как
@@ -20,11 +20,52 @@
 # суммы элементов полученного списка.
 
 print("Exercise 1.")
+def ariph_seg(start, n, step=1):
+    x = (item for item in range(start, start + n * step, step))
+    return x
 
-def geom(start, stop, step):
-    while start < stop:
-        yield start
-        start *= step
+def gen(start, n, f):
+    x = f(start, n)
 
-for item in geom(1, 1000, 3):
+    for item in x:
+        yield item
+
+for item in gen(1, 20, ariph_seg):
     print(item, end= '; ')
+
+print("\n\nExercise 2.")
+def ariph_seq(start, n, step=1):
+    x = (item for item in range(start, start + n * step, step))
+    return x
+
+def geom_gen(start, n, q=3):
+    i = 0
+    while i < n:
+        yield start
+        start *= q
+        i += 1
+
+def gen(start, n, f):
+    x = f(start, n)
+
+    for item in x:
+        yield item
+
+for item in gen(2, 20, geom_gen):
+    print(item, end= '; ')
+
+print("\n\nExercise 3.")
+def my_filter(sequence, predicate):
+    result = []
+    for element in sequence:
+        if predicate(element):
+            result.append(element)
+    return result
+
+sequence = [0, 7, 4, 11, -4, 17, 24, 3]
+
+def predicate_one(number):
+    return number % 2
+
+a = my_filter(sequence, lambda x: x % 2)
+print(a)
